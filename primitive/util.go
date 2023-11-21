@@ -1,6 +1,9 @@
 package primitive
 
 import (
+	"encoding/base64"
+	//"bytes"
+	"strings"
 	"fmt"
 	"image"
 	"image/color"
@@ -19,6 +22,21 @@ import (
 func LoadImage(path string) (image.Image, error) {
 	if path == "-" {
 		im, _, err := image.Decode(os.Stdin)
+		return im, err
+	} else if path == "env_var_base64" {
+		//file, err := os.Open(path)
+		/*file, err := base64.RawStdEncoding.DecodeString(path)
+		if err != nil {
+			return nil, err
+		}
+
+		r := bytes.NewReader(byteData)
+
+		defer r.Close()*/
+
+		reader := base64.NewDecoder(base64.StdEncoding, strings.NewReader(os.Getenv("IMAGE")))
+
+		im, _, err := image.Decode(reader) //(r)
 		return im, err
 	} else {
 		file, err := os.Open(path)

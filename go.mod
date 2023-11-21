@@ -1,4 +1,4 @@
-module github.com/hashbite/primitive
+module self/primitive
 
 go 1.17
 

@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hashbite/primitive/primitive"
+	"self/primitive/primitive"
 	"github.com/nfnt/resize"
 )
 
